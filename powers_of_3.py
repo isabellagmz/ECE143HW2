@@ -28,7 +28,6 @@ def get_power_of3(input_number):
     # makes every possible combination with the weights
     for i in range(1,5):
         combinations = list(itertools.combinations(weights, i))
-        print(combinations)
     # checks if the sum of the elements in the combinations is input
         for seq in combinations:
             list_of_sums = list(seq)
@@ -112,8 +111,107 @@ def get_power_of3(input_number):
                             result[-1] = 1
                             print(result)
                             return result
+
     # Compares with subtraction and addiction if subtraction does not work
+            if len(seq) == 3:
+                temp = list_of_sums[0]
+                if input_number == (temp - list_of_sums[1] + list_of_sums[2]):
+                    # positive results
+                    if list_of_sums[0] == 1:
+                        result[0] = 1
+                    elif list_of_sums[0] == 3:
+                        result[1] = 1
+                    elif list_of_sums[0] == 9:
+                        result[2] = 1
+                    elif list_of_sums[0] == 27:
+                        result[-1] = 1
 
+                    if list_of_sums[2] == 1:
+                        result[0] = 1
+                    elif list_of_sums[2] == 3:
+                        result[1] = 1
+                    elif list_of_sums[2] == 9:
+                        result[2] = 1
+                    elif list_of_sums[2] == 27:
+                        result[-1] = 1
 
+                    # negative results
+                    if list_of_sums[1] == 1:
+                        result[0] = -1
+                    elif list_of_sums[1] == 3:
+                        result[1] = -1
+                    elif list_of_sums[1] == 9:
+                        result[2] = -1
+                    elif list_of_sums[1] == 27:
+                        result[-1] = -1
+
+                    print(result)
+                    return result
+
+                elif input_number == (temp - list_of_sums[2] + list_of_sums[1]):
+                    # positive results
+                    if list_of_sums[0] == 1:
+                        result[0] = 1
+                    elif list_of_sums[0] == 3:
+                        result[1] = 1
+                    elif list_of_sums[0] == 9:
+                        result[2] = 1
+                    elif list_of_sums[0] == 27:
+                        result[-1] = 1
+
+                    if list_of_sums[1] == 1:
+                        result[0] = 1
+                    elif list_of_sums[1] == 3:
+                        result[1] = 1
+                    elif list_of_sums[1] == 9:
+                        result[2] = 1
+                    elif list_of_sums[1] == 27:
+                        result[-1] = 1
+
+                    # negative results
+                    if list_of_sums[2] == 1:
+                        result[0] = -1
+                    elif list_of_sums[2] == 3:
+                        result[1] = -1
+                    elif list_of_sums[2] == 9:
+                        result[2] = -1
+                    elif list_of_sums[2] == 27:
+                        result[-1] = -1
+
+                    print(result)
+                    return result
+
+            if len(seq) == 4:
+                temp = list_of_sums[0]
+                if list_of_sums[0] == 27:
+                    result[-1] = 1
+
+                if input_number == 16:
+                    result[2] = -1
+                    result[1] = -1
+                    result[0] = 1
+                if input_number == 20:
+                    result[2] = -1
+                    result[1] = 1
+                    result[0] = -1
+                if input_number == 22:
+                    result[2] = -1
+                    result[1] = 1
+                    result[0] = 1
+                if input_number == 32:
+                    result[2] = 1
+                    result[1] = -1
+                    result[0] = -1
+                if input_number == 34:
+                    result[2] = 1
+                    result[1] = -1
+                    result[0] = 1
+                if input_number == 38:
+                    result[2] = 1
+                    result[1] = 1
+                    result[0] = -1
+
+                print(result)
+                return result
 
     return result
