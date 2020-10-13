@@ -8,4 +8,4 @@ if __name__ == '__main__':
 
     my_Homework2 = Homework2()
     #isi.is_string_integer(some)
-    pw.get_power_of3(12)
+    pw.get_power_of3(14)

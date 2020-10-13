@@ -14,7 +14,7 @@
 import itertools
 def get_power_of3(input_number):
 
-    '''Needs dot quotes'''
+    '''This is a very unclean function, needs to be revised before sharing'''
 
     # Check that the input is an integer between 1 and 40
     assert type(input_number) == int
@@ -28,9 +28,12 @@ def get_power_of3(input_number):
     # makes every possible combination with the weights
     for i in range(1,5):
         combinations = list(itertools.combinations(weights, i))
+        print(combinations)
     # checks if the sum of the elements in the combinations is input
         for seq in combinations:
             list_of_sums = list(seq)
+            list_of_sums.sort(reverse=True)
+            #print(list_of_sums)
             if sum(seq) == input_number:
                 # make the return list
                 for element in list_of_sums:
@@ -42,13 +45,74 @@ def get_power_of3(input_number):
                         result[2] = 1
                     elif element == 27:
                         result[-1] = 1
-                print(seq)
+                print(result)
+                return result
 
-    a = [[0, 0, 0, 0], [1, 3, 9, 27]]
+    # Compares with subtraction if sum does not work
+            elif len(list_of_sums) >= 2:
+                #print(list_of_sums)
+                temp = list_of_sums[0] - list_of_sums[1]
+                if temp == input_number:
+                    # Negative ones in results
+                    if list_of_sums[1] == 1:
+                        result[0] = -1
+                    elif list_of_sums[1] == 3:
+                        result[1] = -1
+                    elif list_of_sums[1] == 9:
+                        result[2] = -1
+                    elif list_of_sums[1] == 27:
+                        result[-1] = -1
 
+                    # Positive results
+                    if list_of_sums[0] == 1:
+                        result[0] = 1
+                    elif list_of_sums[0] == 3:
+                        result[1] = 1
+                    elif list_of_sums[0] == 9:
+                        result[2] = 1
+                    elif list_of_sums[0] == 27:
+                        result[-1] = 1
+                    print(result)
+                    return result
 
+                if len(list_of_sums) >= 3:
+                    temp = temp - list_of_sums[2]
+                    if temp == input_number:
+                        # Negative ones in results
+                        for i in range(1,3):
+                            if list_of_sums[i] == 1:
+                                result[0] = -1
+                            elif list_of_sums[i] == 3:
+                                result[1] = -1
+                            elif list_of_sums[i] == 9:
+                                result[2] = -1
+                            elif list_of_sums[i] == 27:
+                                result[-1] = -1
 
-    print(result)
+                        # positive results
+                        if list_of_sums[0] == 1:
+                            result[0] = 1
+                        elif list_of_sums[0] == 3:
+                            result[1] = 1
+                        elif list_of_sums[0] == 9:
+                            result[2] = 1
+                        elif list_of_sums[0] == 27:
+                            result[-1] = 1
+                        print(result)
+                        return result
+
+                if len(list_of_sums) >= 4:
+                    temp = temp - list_of_sums[3]
+                    if temp == input_number:
+                        # Negative ones in results
+                        for i in range(4):
+                            result[0] = -1
+                            result[1] = -1
+                            result[2] = -1
+                            result[-1] = 1
+                            print(result)
+                            return result
+    # Compares with subtraction and addiction if subtraction does not work
 
 
 
