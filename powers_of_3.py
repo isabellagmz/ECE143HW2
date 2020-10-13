@@ -22,7 +22,7 @@ def get_power_of3(input_number):
     assert input_number <= 40
 
     # the weights for the formation of integer
-    weights = {1,3,9,27}
+    '''weights = {1,3,9,27}
 
     # makes every possible combination with the weights
     for i in range(1,5):
@@ -31,8 +31,35 @@ def get_power_of3(input_number):
         for seq in combinations:
             list_of_sums = list(seq)
             if sum(seq) == input_number:
-                print(seq)
+                print(seq)'''
+
+    a = [[0, 0, 0, 0], [1, 3, 9, 27]]
+    result = [0, 0, 0, 0]  # to store result
+    for i in range(2):  # generating pattern
+        for op1 in range(2):
+            for j in range(2):
+                if (op1 == 0):
+                    s = a[i][0] + a[j][1]
+                else:
+                    s = a[i][1] - a[j][0]
+        for op2 in range(2):
+            for k in range(2):
+                if (op2 == 0):
+                    t = s + a[k][2]
+                else:
+                    t = a[k][2] - s
+        for op3 in range(2):
+            for l in range(2):
+                if (op3 == 0):
+                    u = t + a[l][3]
+                else:
+                    u = a[l][3] - t
+        # print(u)
+        if (u == input_number):
+            result = [i, j, k, l]
+
+    print(result)
 
 
 
-    return 0
+    return result
