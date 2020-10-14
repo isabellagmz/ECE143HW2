@@ -32,17 +32,25 @@ def write_columns(data, fname):
 
     # Making the 3 variables to be printed to the file
     for data_value in data:
-        first_column = float(data_value)
-        second_column = float(data_value**2)
-        third_column = float((data_value+data_value**2)/3)
+        first_column = data_value
+        second_column = data_value**2
+        third_column = (data_value+data_value**2)/3
 
         # Formatting to hundreds place
-        first_column = "%.2f" % first_column
-        second_column = "%.2f" % second_column
+        if type(first_column) == float:
+            first_column = round(first_column,2)
+            first_column = "%.2f" % first_column
+        if type(second_column) == float:
+            second_column = round(second_column, 2)
+            second_column = "%.2f" % second_column
+        third_column = round(third_column, 2)
         third_column = "%.2f" % third_column
 
         # Make file entries
         file_entry = file_entry + str(first_column) + ',' + str(second_column) + ',' + str(third_column) + '\n'
+
+    # Removing the new_line character from string
+    file_entry = file_entry[:-1]
 
     # Making file
     with open(fname, 'w', newline='') as file:
