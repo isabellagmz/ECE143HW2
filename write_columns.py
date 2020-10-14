@@ -28,33 +28,26 @@ def write_columns(data, fname):
         check_float = isinstance(data[elements], float)
         assert (check_int or check_float)
 
-    file_entry = ""
-
-    # Making the 3 variables to be printed to the file
-    for data_value in data:
-        first_column = data_value
-        second_column = data_value**2
-        third_column = (data_value+data_value**2)/3
-
-        # Formatting to hundreds place
-        if type(first_column) == float:
-            first_column = round(first_column,2)
-            first_column = "%.2f" % first_column
-        if type(second_column) == float:
-            second_column = round(second_column, 2)
-            second_column = "%.2f" % second_column
-        third_column = round(third_column, 2)
-        third_column = "%.2f" % third_column
-
-        # Make file entries
-        file_entry = file_entry + str(first_column) + ',' + str(second_column) + ',' + str(third_column) + '\n'
-
-    # Removing the new_line character from string
-    file_entry = file_entry[:-1]
-
-    # Making file
+    # Making the file
     with open(fname, 'w', newline='') as file:
-        writer = csv.writer(file)
-        writer.writerow([file_entry])
+        # Making the 3 variables to be printed to the file
+        for data_value in data:
+            first_column = data_value
+            second_column = data_value**2
+            third_column = (data_value+data_value**2)/3
+
+            # Formatting to hundreds place
+            if type(first_column) == float:
+                first_column = round(first_column,2)
+                first_column = "%.2f" % first_column
+            if type(second_column) == float:
+                second_column = round(second_column, 2)
+                second_column = "%.2f" % second_column
+            third_column = round(third_column, 2)
+            third_column = "%.2f" % third_column
+
+            # Make file entries
+            writer = csv.writer(file)
+            writer.writerow([first_column, second_column, third_column])
 
     return 0
