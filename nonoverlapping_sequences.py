@@ -10,6 +10,7 @@
 # above corpus and fname is the output filename string.
 
 ##############################################################################
-# Will take an integer as input and construct any integer between 1 and 40   #
-# without re-using elements.                                                 #
+# Creates a file with 10,000 English words arranged in rows of 5             #
 ##############################################################################
+def write_chunks_of_five(words,fname):
+    pass
