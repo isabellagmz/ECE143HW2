@@ -29,10 +29,13 @@ def write_chunks_of_five(words,fname):
 
     file_entry = "" # formatting string for file
     words_per_line = 0
+    extra_counter = 0
+    new_lines = 0 # new_line counter
 
     # To arrange incoming words
     for word in range(len(words)):
-        # Brings counter back to 0 and enters the line after 5 words
+        extra_counter = extra_counter + 1  # increments extra counter
+        # Brings word counter to 0 and enters the line after 5 words
         if words_per_line == 5:
             words_per_line = 0
             file_entry = file_entry + "\n"
@@ -46,6 +49,7 @@ def write_chunks_of_five(words,fname):
     # Making the file
     with open(fname, 'w', newline='') as file:
         writer = csv.writer(file)
-        writer.writerow([file_entry])
+        #writer.writerow([file_entry])
+        file.write(file_entry)
 
     return 0
